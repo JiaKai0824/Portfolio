@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="s-footer">
       <div className="row">
         <div className="column ss-copyright">
-          <span>© Copyright Luther 2021</span>
+          {/* <span>© Copyright Luther 2021</span>
           <span>
             Design by{' '}
             <a href="https://www.styleshout.com/" target="_blank" rel="noopener noreferrer">
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             <a href="https://themewagon.com" target="_blank" rel="noopener noreferrer">
               Themewagon
             </a>
-          </span>
+          </span> */}
         </div>
 
         <div className="ss-go-top">

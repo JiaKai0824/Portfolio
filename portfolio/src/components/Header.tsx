@@ -13,7 +13,7 @@ const Header: React.FC = () => {
     <header className="s-header">
       <div className="header-mobile">
         <span className="mobile-home-link">
-          <a href="index.html">Luther.</a>
+          <a href="index.html">Jia Kai</a>
         </span>
         <a className="mobile-menu-toggle" href="#0" onClick={toggleMenu}>
           <span>Menu</span>
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
           <ul className={menuOpen ? 'active' : ''}>
             <li>
               <a href="index.html" className="home-link">
-                Luther.
+                Jia Kai
               </a>
             </li>
             <li className="current">
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
             </li>
             <li>
               <a href="#contact" className="smoothscroll">
-                Say Hello
+                Contact
               </a>
             </li>
           </ul>
