@@ -1,9 +1,11 @@
-import React from 'react';
-import { AnimatePresence, motion } from "motion/react";
-import { CanvasRevealEffect } from "./ui/canvas-reveal-effect";
+'use client';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
+import Link from 'next/link';
 
-const Main: React.FC = () => {
-  const [hovered, setHovered] = React.useState(false);
+const Main = () => {
+  const [hovered, setHovered] = useState(false);
 
   return (
     <main className="main-content">
@@ -11,7 +13,7 @@ const Main: React.FC = () => {
       <header className="s-header">
         <div className="header-mobile">
           <span className="mobile-home-link">
-            <a href="index.html">JiaKai</a>
+            <Link href="/">JiaKai</Link>
           </span>
           <a className="mobile-menu-toggle" href="#0">
             <span>Menu</span>
@@ -20,20 +22,18 @@ const Main: React.FC = () => {
         <div className="row wide main-nav-wrap">
           <nav className="column lg-12 main-nav">
             <ul>
-              <li><a href="index.html" className="home-link">JiaKai</a></li>
+              <li><Link href="/" className="home-link">JiaKai</Link></li>
               <li><a href="#intro" className="smoothscroll">Intro</a></li>
               <li><a href="#about" className="smoothscroll">About</a></li>
               <li><a href="#works" className="smoothscroll">Works</a></li>
-                <li><a href="#contact" className="smoothscroll">Say Hello</a></li>
-              </ul>
+              <li><a href="#contact" className="smoothscroll">Say Hello</a></li>
+            </ul>
           </nav>
         </div>
       </header>
 
-    
-
-      {/* CanvasRevealEffect Demo Section */}
-      <div
+      {/* CanvasRevealEffect Section */}
+      <section
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className="h-[40rem] flex flex-col lg:flex-row overflow-hidden items-center justify-center bg-black w-full gap-4 mx-auto px-8 relative"
@@ -42,6 +42,7 @@ const Main: React.FC = () => {
           With insomnia, nothing&apos;s real. Everything is far away. Everything
           is a copy, of a copy, of a copy.
         </p>
+        
         <AnimatePresence>
           {hovered && (
             <motion.div
@@ -54,8 +55,8 @@ const Main: React.FC = () => {
                 animationSpeed={5}
                 containerClassName="bg-transparent"
                 colors={[
-                  [59, 130, 246],
-                  [139, 92, 246],
+                  [59, 130, 246],  // blue-500
+                  [139, 92, 246],  // violet-500
                 ]}
                 opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
                 dotSize={2}
@@ -63,9 +64,10 @@ const Main: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        {/* Radial gradient for the cute fade */}
-        <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
-      </div>
+        
+        {/* Radial gradient */}
+        <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50" />
+      </section>
     </main>
   );
 };

@@ -18,10 +18,13 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".", 
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["*"] // Define the alias `@` to point to `src`
+    },
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../portfolio/src/components/ui/container-scroll-animation.tsx", "../portfolio/src/components/ui/3d-marquee.tsx", "../portfolio/src/components/ui/animated-testimonials.tsx", "../portfolio/src/components/ui/canvas-reveal-effect.tsx"],
   "exclude": ["node_modules"]
+  
+  
 }

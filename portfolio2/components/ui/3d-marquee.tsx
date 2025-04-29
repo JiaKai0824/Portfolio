@@ -1,5 +1,5 @@
 "use client";
- 
+
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 export const ThreeDMarquee = ({
@@ -70,7 +70,7 @@ export const ThreeDMarquee = ({
     </div>
   );
 };
- 
+
 const GridLineHorizontal = ({
   className,
   offset,
@@ -105,7 +105,7 @@ const GridLineHorizontal = ({
     ></div>
   );
 };
- 
+
 const GridLineVertical = ({
   className,
   offset,
