@@ -1,13 +1,17 @@
 import React from 'react';
-import { ContainerScroll } from "./ui/container-scroll-animation";
+import { AnimatePresence, motion } from "motion/react";
+import { CanvasRevealEffect } from "./ui/canvas-reveal-effect";
+
 const Main: React.FC = () => {
+  const [hovered, setHovered] = React.useState(false);
+
   return (
     <main className="main-content">
       {/* Header Section */}
       <header className="s-header">
         <div className="header-mobile">
           <span className="mobile-home-link">
-            <a href="index.html">Luther.</a>
+            <a href="index.html">JiaKai</a>
           </span>
           <a className="mobile-menu-toggle" href="#0">
             <span>Menu</span>
@@ -16,45 +20,52 @@ const Main: React.FC = () => {
         <div className="row wide main-nav-wrap">
           <nav className="column lg-12 main-nav">
             <ul>
-              <li><a href="index.html" className="home-link">Luther.</a></li>
+              <li><a href="index.html" className="home-link">JiaKai</a></li>
               <li><a href="#intro" className="smoothscroll">Intro</a></li>
               <li><a href="#about" className="smoothscroll">About</a></li>
               <li><a href="#works" className="smoothscroll">Works</a></li>
-              <li><a href="#contact" className="smoothscroll">Say Hello</a></li>
-            </ul>
+                <li><a href="#contact" className="smoothscroll">Say Hello</a></li>
+              </ul>
           </nav>
         </div>
       </header>
 
-      {/* Scrollable Content Section */}
-      <ContainerScroll titleComponent={<h2 className="text-pretitle">About Me</h2>}>
-        {/* About Section Content */}
-        <div className="about-content">
-          <p className="h1">
-            I am passionate about creating innovative and efficient solutions through code. My journey in software development started with a love for problem-solving and technology.
-          </p>
-          <p>
-            I have experience working with various technologies including React, TypeScript, Python, and more. My goal is to continue learning and grow as a developer.
-          </p>
-        </div>
-      </ContainerScroll>
+    
 
-      {/* Footer Section */}
-      <footer className="s-footer">
-        <div className="row">
-          <div className="column ss-copyright">
-            <span>© Copyright Luther 2021</span> 
-            <span>Design by <a href="https://www.styleshout.com/">StyleShout</a> Distribution By <a href="https://themewagon.com">Themewagon</a></span>
-          </div>
-          <div className="ss-go-top">
-            <a className="smoothscroll" title="Back to Top" href="#top">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd">
-                <path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </footer>
+      {/* CanvasRevealEffect Demo Section */}
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="h-[40rem] flex flex-col lg:flex-row overflow-hidden items-center justify-center bg-black w-full gap-4 mx-auto px-8 relative"
+      >
+        <p className="md:text-2xl text-2xl font-medium text-center text-white relative z-20 max-w-2xl mx-auto">
+          With insomnia, nothing&apos;s real. Everything is far away. Everything
+          is a copy, of a copy, of a copy.
+        </p>
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="h-full w-full absolute inset-0"
+            >
+              <CanvasRevealEffect
+                animationSpeed={5}
+                containerClassName="bg-transparent"
+                colors={[
+                  [59, 130, 246],
+                  [139, 92, 246],
+                ]}
+                opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
+                dotSize={2}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {/* Radial gradient for the cute fade */}
+        <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
+      </div>
     </main>
   );
 };
