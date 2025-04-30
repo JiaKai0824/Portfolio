@@ -1,75 +1,38 @@
 'use client';
 import { useState } from 'react';
+import React from "react";
 import { AnimatePresence, motion } from 'framer-motion';
-import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
-import Link from 'next/link';
-
+import { BackgroundBeamsWithCollision  } from '@/components/ui/background-beams-with-collision';
+import { Boxes } from "@/components/ui/background-boxes";
+import { TextHoverEffect } from "@/components/ui/text-hover-effect";
+import { cn } from "@/lib/utils";
 const Main = () => {
-  const [hovered, setHovered] = useState(false);
+
 
   return (
-    <main className="main-content">
-      {/* Header Section */}
-      <header className="s-header">
-        <div className="header-mobile">
-          <span className="mobile-home-link">
-            <Link href="/">JiaKai</Link>
-          </span>
-          <a className="mobile-menu-toggle" href="#0">
-            <span>Menu</span>
-          </a>
-        </div>
-        <div className="row wide main-nav-wrap">
-          <nav className="column lg-12 main-nav">
-            <ul>
-              <li><Link href="/" className="home-link">JiaKai</Link></li>
-              <li><a href="#intro" className="smoothscroll">Intro</a></li>
-              <li><a href="#about" className="smoothscroll">About</a></li>
-              <li><a href="#works" className="smoothscroll">Works</a></li>
-              <li><a href="#contact" className="smoothscroll">Say Hello</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+    <>
+    <DummyContent></DummyContent>
+    </>
+  );
+}
 
-      {/* CanvasRevealEffect Section */}
-      <section
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className="h-[40rem] flex flex-col lg:flex-row overflow-hidden items-center justify-center bg-black w-full gap-4 mx-auto px-8 relative"
-      >
-        <p className="md:text-2xl text-2xl font-medium text-center text-white relative z-20 max-w-2xl mx-auto">
-          With insomnia, nothing&apos;s real. Everything is far away. Everything
-          is a copy, of a copy, of a copy.
-        </p>
-        
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="h-full w-full absolute inset-0"
-            >
-              <CanvasRevealEffect
-                animationSpeed={5}
-                containerClassName="bg-transparent"
-                colors={[
-                  [59, 130, 246],  // blue-500
-                  [139, 92, 246],  // violet-500
-                ]}
-                opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
-                dotSize={2}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
-        {/* Radial gradient */}
-        <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50" />
-      </section>
-    </main>
+
+const DummyContent = () => {
+  return (
+    <BackgroundBeamsWithCollision>
+      <div className="h-100 relative w-full overflow-hidden bg-black flex flex-col items-center justify-center rounded-lg">
+      <div className="absolute inset-0 w-full h-full bg-black z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+
+      <Boxes />
+      <h1 className={cn("md:text-4xl text-xl text-white relative z-20")}>
+       Web Designer & Developer
+      </h1>
+      <p className="text-center mt-2 text-neutral-300 relative z-20">
+        Nice to Meet you
+      </p>
+    </div>
+    </BackgroundBeamsWithCollision>
+  
   );
 };
-
 export default Main;

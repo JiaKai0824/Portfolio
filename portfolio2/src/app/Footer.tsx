@@ -1,38 +1,78 @@
 import React from 'react';
+import { FloatingDock } from "@/components/ui/floating-dock";
+import {
+  IconBrandGithub,
+  IconBrandX,
+  IconExchange,
+  IconHome,
+  IconNewSection,
+  IconTerminal2,
+} from "@tabler/icons-react";
 
-const Footer: React.FC = () => {
+export default function FloatingDockDemo() {
+  const links = [
+    {
+      title: "Home",
+      icon: (
+        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+ 
+    {
+      title: "Products",
+      icon: (
+        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Components",
+      icon: (
+        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Aceternity UI",
+      icon: (
+        <img
+          src="https://assets.aceternity.com/logo-dark.png"
+          width={20}
+          height={20}
+          alt="Aceternity Logo"
+        />
+      ),
+      href: "#",
+    },
+    {
+      title: "Changelog",
+      icon: (
+        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+ 
+    {
+      title: "Twitter",
+      icon: (
+        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "GitHub",
+      icon: (
+        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+  ];
   return (
-    <footer className="s-footer">
-      <div className="row">
-        <div className="column ss-copyright">
-          <span>© Copyright Luther 2021</span>
-          <span>
-            Design by{' '}
-            <a href="https://www.styleshout.com/" target="_blank" rel="noopener noreferrer">
-              StyleShout
-            </a>{' '}
-            Distribution By{' '}
-            <a href="https://themewagon.com" target="_blank" rel="noopener noreferrer">
-              Themewagon
-            </a>
-          </span>
-        </div>
-
-        <div className="ss-go-top">
-          <a className="smoothscroll" title="Back to Top" href="#top">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fillRule="evenodd"
-              clipRule="evenodd"
-            >
-              <path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </footer>
+    <div className="relative w-full flex items-center justify-center bg-transparent z-50">
+      <FloatingDock
+        items={links}
+      />
+    </div>
   );
-};
-
-export default Footer;
+}
